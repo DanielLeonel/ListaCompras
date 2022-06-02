@@ -24,6 +24,8 @@ let txtNumber = document.getElementById("Number");
 let tabla = document.getElementById("tablaListaCompras");
 let cuerpoTabla= tabla.getElementsByTagName("tbody");
 let total = document.getElementById("precioTotal");
+let totalEnProductos=0;
+
 // cuerpoTabla[0].innerHTML=
 // `<tr>
 // <th scope="row">1</th>
@@ -98,6 +100,9 @@ agregar.addEventListener("click", (event)=>{
     document.getElementById("precioTotal").innerHTML
     let precio = (Math.floor((Math.random() * 50)*100))/100;
     let cantidad = parseFloat(txtNumber.value);
+    totalEnProductos += (cantidad<1)?Math.ceil(cantidad):parseInt(cantidad);
+    document.getElementById("productosTotal").innerHTML = totalEnProductos; 
+
     costoTotal += (precio*cantidad);
     total.innerHTML=`$ ${costoTotal.toFixed(2)}`
 
